@@ -15,7 +15,7 @@ export default function CustomerSurvey({ surveyData }) {
   const {query} = useRouter()
   const nextRoute = `custom-survey?${query.test}`
     return (
-      <>
+      <Layout>
         <h1>This is a survey</h1>
         <ul>
           {surveyData.questions.map(({ prompt, type }) => (
@@ -32,6 +32,6 @@ export default function CustomerSurvey({ surveyData }) {
         }}>
           <a>next</a>
         </Link>
-      </>
+      </Layout>
     ) 
   }
