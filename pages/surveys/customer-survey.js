@@ -19,16 +19,16 @@ export default function CustomerSurvey({ surveyData }) {
       <Layout>
         <h1>This is a survey</h1>
         <ul>
-          {surveyData.questions.map(({ prompt, type }) => (
-            <li>
-              {prompt}
+          {surveyData.questions.map((object, i) => (
+            <li key={i}>
+              {object.prompt}
               <br />
-              {type}
+              {object.type}
             </li>
           ))}
         </ul>
         <Link href={{
-          pathname: 'custom-survey',
+          pathname: '/surveys/custom-survey',
           query,
         }}>
           <a>next</a>

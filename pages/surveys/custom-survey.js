@@ -14,15 +14,15 @@ export default function CustomSurvey({ id }) {
         { id }
         <h1>Sandbox survey</h1>
         <ul>
-          {surveyData.questions.map(({ prompt, type }) => (
-            <li>
-              {prompt}
+        {surveyData.questions.map((object, i) => (
+            <li key={i}>
+              {object.prompt}
               <br />
-              {type}
+              {object.type}
             </li>
           ))}
         </ul>
-        <Link href='thank-you'>
+        <Link href='/surveys/thank-you'>
           <a>submit</a>
         </Link>
       </>
