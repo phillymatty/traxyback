@@ -1,0 +1,17 @@
+.st-card__body {
+    //@extend .grid-x;
+
+    padding: 5px 10px;
+}
+.st-card__cell {
+   // @extend .cell;
+}
+.st-card__cell--border-bottom {
+    border-bottom: 2px solid $dark-steel;
+}
+.st-card__body--has-loader {
+    justify-content: center;
+}
+.st-card__body--full-height {
+    height: 100%;
+}

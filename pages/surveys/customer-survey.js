@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { getSurveyQuestions } from '../../lib/surveys'
 import Link from 'next/link'
+import Layout from "../../components/Layout";
 
 export async function getStaticProps() {
   const surveyData = getSurveyQuestions('base')
