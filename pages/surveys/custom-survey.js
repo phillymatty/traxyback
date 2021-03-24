@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 
 export async function getServerSideProps(context) {
   const query = context.query
-  console.warn(query)
   // const res = await fetch('https://.../data')
   // const surveyData = await res.json()
   const surveyData = getCompanySurveyQuestions(query.survey_id)
