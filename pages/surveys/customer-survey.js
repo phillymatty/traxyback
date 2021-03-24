@@ -1,13 +1,10 @@
 import { useRouter } from 'next/router'
-
 import Link from 'next/link'
 import Layout from '../../components/layout'
-import { getSurveyQuestions } from '../../lib/surveys'
 
 export async function getStaticProps() {
-  // const res = await fetch('https://.../surveys')
-  // const surveyData = await res.json()
-  const surveyData = getSurveyQuestions()
+  const res = await fetch(`https://survey-hackathon-api.review.securitytrax.com/sandbox/user/v1/surveys/1/actions/get_survey_data?survey_hash=1a2dd-22ac29cecf5b6f2f86f7fa8c4443e534`)
+  const surveyData = await res.json()
   return {
     props: {
       surveyData,
