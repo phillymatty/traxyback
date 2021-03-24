@@ -21,7 +21,7 @@ export default function CustomerSurvey({ surveyData }) {
         <h1>This is a survey</h1>
        
           {surveyData.questions.map((object, i) => (
-            <Input key={i} prompt={object.prompt} type={object.type}>
+            <Input key={i} prompt={object.question_name} type={object.question_type}>
               
             </Input>
           ))}
