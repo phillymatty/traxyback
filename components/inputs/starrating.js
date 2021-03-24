@@ -1,9 +1,16 @@
 //star rating.js
+import React from 'react';
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
-const StarRating = props => (
-    <div>
-       Stars
-    </div>
-)
-
-export default StarRating;
+export default function StarRating({props}) {
+    const uniqueName = `rating${props.number}`
+    return (
+        <div>
+            <Rating
+                name={uniqueName}
+                defaultValue={2}
+            />
+        </div>
+    )
+}

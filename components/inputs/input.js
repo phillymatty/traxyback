@@ -14,10 +14,10 @@ export default Input;
 
 function InputType(props) {
    if(props.type == 'checkbox'){
-       return <Checkbox props />
+       return <Checkbox props={props} />
    }
    else if((props.type == 'input')){
-       return <Textarea props/>
+       return <Textarea props={props}/>
    }
-   return  <StarRating props/>
+   return  <StarRating props={props}/>
 }

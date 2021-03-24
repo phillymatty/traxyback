@@ -2,6 +2,8 @@ import { getCompanySurveyQuestions, getSurveyQuestions } from '../../lib/surveys
 import Link from 'next/link'
 import Layout from '../../components/layout'
 import Head from 'next/head'
+import Card from '../../components/cards/card'
+import Input from '../../components/inputs/input'
 
 export async function getServerSideProps(context) {
   const query = context.query
@@ -27,19 +29,18 @@ export default function CustomSurvey({ surveyData }) {
       <Head>
         <title>Company Survey</title>
       </Head>
-      <h1>Sandbox survey</h1>
-      <ul>
-        {surveyData.questions.map((object2, i) => (
-          <li key={i}>
-            {object2.question_name}
-            <br />
-            {object2.question_type}
-          </li>
+
+      <Card>
+        <h1>Sandbox survey</h1>
+        {surveyData.questions.map((object, i) => (
+            <Input key={i} prompt={object.question_name} type={object.question_type} number={i}>
+              
+            </Input>
         ))}
-      </ul>
-      <Link href='/surveys/thank-you'>
-        <a>submit</a>
-      </Link>
+        <Link href='/surveys/thank-you'>
+          <a className='button button-primary'>submit</a>
+        </Link>
+      </Card>
     </Layout>
   )
 }
