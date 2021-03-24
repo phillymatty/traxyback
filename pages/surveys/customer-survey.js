@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
-import { getSurveyQuestions } from '../../lib/surveys'
 import Link from 'next/link'
 import Layout from '../../components/layout'
 import Card from '../../components/cards/card'
 import Input from '../../components/inputs/input'
 export async function getStaticProps() {
-  const surveyData = getSurveyQuestions('base')
+  const res = await fetch(`https://survey-hackathon-api.review.securitytrax.com/sandbox/user/v1/surveys/1/actions/get_survey_data?survey_hash=1a2dd-22ac29cecf5b6f2f86f7fa8c4443e534`)
+  const surveyData = await res.json()
   return {
     props: {
       surveyData,
@@ -15,7 +15,6 @@ export async function getStaticProps() {
 
 export default function CustomerSurvey({ surveyData }) {
   const {query} = useRouter()
-  const nextRoute = `custom-survey?${query.test}`
     return (
       <Layout>
           <Card>
