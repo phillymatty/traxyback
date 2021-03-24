@@ -1,5 +1,7 @@
 import { getCompanySurveyQuestions, getSurveyQuestions } from '../../lib/surveys'
 import Link from 'next/link'
+import Layout from '../../components/layout'
+import Head from 'next/head'
 
 export async function getServerSideProps(context) {
   const query = context.query
@@ -21,7 +23,10 @@ export async function getServerSideProps(context) {
 export default function CustomSurvey({ surveyData }) {
 
   return (
-    <>
+    <Layout>
+      <Head>
+        <title>Company Survey</title>
+      </Head>
       <h1>Sandbox survey</h1>
       <ul>
         {surveyData.questions.map((object2, i) => (
@@ -35,6 +40,6 @@ export default function CustomSurvey({ surveyData }) {
       <Link href='/surveys/thank-you'>
         <a>submit</a>
       </Link>
-    </>
-  ) 
+    </Layout>
+  )
 }
