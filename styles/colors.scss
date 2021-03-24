@@ -1,0 +1,99 @@
+//Greyscale - light
+
+$gray-100: #000000;
+$gray-80: #333333;
+$gray-60: #767676;
+$gray-40: #949494;
+$gray-20: #CCCCCC;
+$gray-10: #E5E5E5;
+$gray-0: #FFFFFF;
+
+$gray-100-dark-mode: #FFFFFF;
+$gray-80-dark-mode: #DDDDE3;
+$gray-60-dark-mode: #888888;
+$gray-40-dark-mode: #676970;
+$gray-20-dark-mode: #505257;
+$gray-10-dark-mode: #35363B;
+$gray-0-dark-mode: #000000;
+
+$base-color: #f0f0f0;
+$surface-color: $gray-0;
+$elevated-color: $gray-0;
+$base-color-dark-mode: #050505;
+$surface-color-dark-mode: #1C1C20;
+$elevated-color-dark-mode: #34343C;
+
+$adc-text-color: $gray-80;
+$adc-text-color-dark-mode: $gray-80-dark-mode;
+
+$adc-text-color-secondary: $gray-60;
+$adc-text-color-secondary-dark-mode: $gray-60-dark-mode;
+
+$adc-ui-blue: #0F86D3;
+$adc-ui-grey: #E7E7E7;
+$adc-ui-red: #D30F0F;
+
+$adc-accent-red: #D92C29;
+$adc-accent-orange: #EC720B;
+$adc-accent-yellow: #FFCD00;
+$adc-accent-lime: #7DC80A;
+$adc-accent-green: #23AB3F;
+$adc-accent-greenblue: #008B8D;
+$adc-accent-greencyan: #00C7B1;
+$adc-accent-cyanblue: #22A1C1;
+$adc-accent-blue: #2071DD;
+$adc-accent-navy: #003865;
+$adc-accent-purple: #5B3D8C;
+$adc-accent-pink: #F0699A;
+
+$adc-accent-red-dark-mode: #E8524F;
+$adc-accent-orange-dark-mode: #F68C32;
+$adc-accent-yellow-dark-mode: #FFD21A;
+$adc-accent-lime-dark-mode: #A0E84F;
+$adc-accent-green-dark-mode: #38CC63;
+$adc-accent-greenblue-dark-mode: #29A6A8;
+$adc-accent-greencyan-dark-mode: #00C7B1;
+$adc-accent-cyanblue-dark-mode: #50B5CE;
+$adc-accent-blue-dark-mode: #5895E7;
+$adc-accent-navy-dark-mode: #408BC9;
+$adc-accent-purple-dark-mode: #9578C4;
+$adc-accent-pink-dark-mode: #F27FA9;
+
+//Accent Variants 
+
+$adc-accent-red-pastel : #EC9594;
+$adc-accent-red-light : #E46B69;
+$adc-accent-red-dark : #BD2623;
+$adc-accent-orange-pastel: #F5B885;
+$adc-accent-orange-light: #F19C54;
+$adc-accent-orange-dark : #B95909;
+$adc-accent-yellow-pastel: #FFE67F;
+$adc-accent-yellow-light: #FFDC4C;
+$adc-accent-yellow-dark: #CCA300;
+$adc-accent-lime-pastel: #BEE384;
+$adc-accent-lime-light: #A4D853;
+$adc-accent-lime-dark: #5C9407;
+$adc-accent-green-pastel: #91D59F;
+$adc-accent-green-light: #65C478;
+$adc-accent-green-dark: #1A7F2F;
+$adc-accent-greenblue-pastel: #7FC5C6;
+$adc-accent-greenblue-light: #4CADAF;
+$adc-accent-greenblue-dark: #007173;
+$adc-accent-greencyan-pastel: #7FE3D8;
+$adc-accent-greencyan-light: #4CD7C8;
+$adc-accent-greencyan-dark: #009483;
+$adc-accent-cyanblue-pastel: #90D0E0;
+$adc-accent-cyanblue-light: #64BDD3;
+$adc-accent-cyanblue-dark: #1B7F98;
+$adc-accent-blue-pastel: #8FB8EE;
+$adc-accent-blue-light: #629BE7;
+$adc-accent-blue-dark: #1857AB;
+$adc-accent-navy-pastel: #7F9BB2;
+$adc-accent-navy-light: #4C7393;
+$adc-accent-navy-dark:#00233F;
+$adc-accent-purple-pastel: #AD9EC5;
+$adc-accent-purple-light: #8C77AE;
+$adc-accent-purple-dark: #432D66;
+$adc-accent-pink-pastel: #F7B4CC;
+$adc-accent-pink-light: #F496B8;
+$adc-accent-pink-dark: #BD537A;

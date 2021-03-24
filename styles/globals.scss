@@ -1,9 +1,21 @@
+@import "colors";
+@import "breakpoints";
+@import "components/buttons/button.module.scss";
+
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+
+        @media (prefers-color-scheme: light) {
+            background-color: $base-color;
+            color: $adc-text-color;
+        }
+        @media (prefers-color-scheme: dark) {
+            background-color: $base-color-dark-mode;
+            color: $adc-text-color-dark-mode;
+        }
 }
 
 a {

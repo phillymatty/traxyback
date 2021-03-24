@@ -1,58 +1,18 @@
-.st-card {
-    background-color: white;
+.card {
     border-radius: 4px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-    margin: 10px 0;
     max-width: 100%;
 
-    .delete-confirm {
-        position: relative;
-        z-index: 10;
-        top: 0px;
-        right: 0px;
-        background-color: #60666c;
-        border-radius: 8px;
-        min-width: 300px;
-        max-height: 100%;
-        padding: 5px;
-        padding-left: 24px;
-        width: 400px;
-        font-size: 15px;
-        color: #fff;
-        text-align: left;
-
-        .delete-confirm-outer {
-            display: table;
-            height: 100%;
-            width: 100%;
-
-            .delete-confirm-inner {
-                > span {
-                    display: inline-block;
-                    margin-right: 10px;
-                    &.message {
-                        margin-right: 24px;
-                    }
-                }
-
-                vertical-align: middle;
-                height: 100%;
-                display: table-cell;
-            }
-        }
-
-        @media only screen and (max-width: ()) {
-            max-width: 100%;
-            padding-left: 0;
-            margin: auto;
-            text-align: center;
-        }
+    @media (prefers-color-scheme: light) {
+        background-color: $surface-color;
+        color: $adc-text-color;
+    }
+    @media (prefers-color-scheme: dark) {
+        background-color: $surface-color-dark-mode;
+        color: $adc-text-color-dark-mode;
     }
 }
-.st-card--no-border {
-    border-radius: 0;
-    box-shadow: none;
-}
+
 
 .st-card--full-width {
     width: 100%;
