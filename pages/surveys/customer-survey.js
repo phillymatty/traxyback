@@ -2,7 +2,8 @@ import { useRouter } from 'next/router'
 import { getSurveyQuestions } from '../../lib/surveys'
 import Link from 'next/link'
 import Layout from '../../components/layout'
-
+import Card from '../../components/cards/card'
+import Input from '../../components/inputs/input'
 export async function getStaticProps() {
   const surveyData = getSurveyQuestions('base')
   return {
@@ -17,22 +18,21 @@ export default function CustomerSurvey({ surveyData }) {
   const nextRoute = `custom-survey?${query.test}`
     return (
       <Layout>
+          <Card>
         <h1>This is a survey</h1>
-        <ul>
+       
           {surveyData.questions.map((object, i) => (
-            <li key={i}>
-              {object.prompt}
-              <br />
-              {object.type}
-            </li>
+            <Input key={i} prompt={object.prompt} type={object.type}>
+              
+            </Input>
           ))}
-        </ul>
         <Link href={{
           pathname: '/surveys/custom-survey',
           query,
         }}>
-          <a>next</a>
+          <a className='button button-primary'>next</a>
         </Link>
+        </Card>
       </Layout>
     ) 
   }

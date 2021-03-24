@@ -1,10 +1,12 @@
 //card.js
-import styles from '../styles/components/Cards.module.scss'
+import styles from '../../styles/components/cards/St-card.module.scss'
 
 const Card = props => (
-  <div className={styles.layout}>
-    <div  class='st-card__cell st-card__cell--border-bottom'>
-      {props.children}
+  <div className={styles.card}>
+    <div  className={styles.card_body}>
+        <div  className={styles.card_cell}>
+        {props.children}
+        </div>
     </div>
   </div>
 );

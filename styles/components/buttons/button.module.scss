@@ -1,0 +1,17 @@
+.button {
+    display: flex;
+    height: 32px;
+    align-items: center;
+    width: fit-content;
+    padding: 0 16px;
+    font-size: 14px;
+    background-color: $adc-ui-grey;
+    text-transform: uppercase;
+    color: $adc-text-color;
+    border-radius: 4px;
+}
+
+.button-primary {
+    background-color: $adc-ui-blue;
+    color: $adc-text-color-dark-mode;
+}
