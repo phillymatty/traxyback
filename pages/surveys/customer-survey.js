@@ -1,10 +1,13 @@
 import { useRouter } from 'next/router'
-import { getSurveyQuestions } from '../../lib/surveys'
+
 import Link from 'next/link'
 import Layout from '../../components/layout'
+import { getSurveyQuestions } from '../../lib/surveys'
 
 export async function getStaticProps() {
-  const surveyData = getSurveyQuestions('base')
+  // const res = await fetch('https://.../surveys')
+  // const surveyData = await res.json()
+  const surveyData = getSurveyQuestions()
   return {
     props: {
       surveyData,
@@ -14,16 +17,15 @@ export async function getStaticProps() {
 
 export default function CustomerSurvey({ surveyData }) {
   const {query} = useRouter()
-  const nextRoute = `custom-survey?${query.test}`
     return (
       <Layout>
         <h1>This is a survey</h1>
         <ul>
-          {surveyData.questions.map((object, i) => (
+          {surveyData.questions.map((object1, i) => (
             <li key={i}>
-              {object.prompt}
+              {object1.question_name}
               <br />
-              {object.type}
+              {object1.question_type}
             </li>
           ))}
         </ul>
