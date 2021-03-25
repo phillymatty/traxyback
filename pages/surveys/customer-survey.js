@@ -30,6 +30,8 @@ export default function CustomerSurvey({ surveyData }) {
   const companyName = (surveyData.company_name && surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
   const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
   const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
+  const systemQuestions = surveyData.questions.filter(function(question) { return question.scope == "system"; });
+
   return (
     <Layout>
         <Head>
@@ -42,7 +44,7 @@ export default function CustomerSurvey({ surveyData }) {
             <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
           </CardCell>
           <CardCell>
-            {surveyData.questions.map((object, i) => (
+            {systemQuestions.map((object, i) => (
               <Input key={i} question={object} surveyData={surveyData} surveyHash={query.survey_hash} callback={sendData}/>
             ))}
           </CardCell>
