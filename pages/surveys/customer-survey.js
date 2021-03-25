@@ -5,21 +5,28 @@ import Head from 'next/head'
 import Card from '../../components/cards/card'
 import Input from '../../components/inputs/input'
 
-export async function getStaticProps() {
-  const res = await fetch(`https://survey-hackathon-api.review.securitytrax.com/sandbox/user/v1/surveys/1/actions/get_survey_data?survey_hash=1a2dd-22ac29cecf5b6f2f86f7fa8c4443e534`)
-  const surveyData = await res.json()
-  return {
-    props: {
-      surveyData,
+export async function getServerSideProps(context) {
+    const query = context.query
+    let surveyData
+    if (query.survey_id && query.survey_hash) {
+      const res = await fetch(`https://survey-hackathon-api.review.securitytrax.com/sandbox/user/v1/surveys/${query.survey_id}/actions/get_survey_data?survey_hash=${query.survey_hash}`)
+      surveyData = await res.json()
+      if (!surveyData.questions) {
+        surveyData = getSurveyQuestions()
+      }
+    } else {
+      surveyData = getSurveyQuestions()
+    }
+    return {
+      props: { surveyData }
     }
   }
-}
 
 export default function CustomerSurvey({ surveyData }) {
   const {query} = useRouter();
   const customerName = (surveyData.customer_name && surveyData.customer_name != ' ' ? surveyData.customer_name : 'Valued Customer');
-  const companyName = (surveyData.company_name  ? surveyData.company_name : 'Sandbox Security');
-  const surveyType = (surveyData.survey_type ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
+  const companyName = (surveyData.company_name && surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
+  const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
   const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
 
     return (
