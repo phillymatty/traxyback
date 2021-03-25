@@ -16,19 +16,24 @@ export async function getStaticProps() {
 }
 
 export default function CustomerSurvey({ surveyData }) {
-  const {query} = useRouter()
+  const {query} = useRouter();
+  const customerName = (surveyData.customer_name ? surveyData.customer_name : 'Valued Customer');
+  const companyName = (surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
+  const surveyType = (surveyData.survey_type != '' ? surveyData.survey_type : 'Security System Install');
+  const userName = (surveyData.user_name != '' ? surveyData.user_name : 'Michel Scott');
+
     return (
       <Layout>
         <Head>
-          <title>Customer Survey</title>
+          <title>{surveyData.survey_name}</title>
         </Head>
         <section>
         <Card>
-          <h1>This is a survey</h1>
+            <h1>{surveyData.survey_name}</h1>
+            <p>Hi {customerName}</p>
+            <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
           {surveyData.questions.map((object, i) => (
-            <Input key={i} prompt={object.question_name} type={object.question_type} number={i}>
-              
-            </Input>
+            <Input key={i} question={object}/>
           ))}
           <Link href={{
             pathname: '/surveys/custom-survey',

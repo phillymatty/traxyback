@@ -1,9 +1,11 @@
 //star rating.js
-
-const Checkbox = props => (
-    <div>
-       <input type='checkbox' name={props.name}></input>
-    </div>
+import React from 'react';
+import Checkbox from '@material-ui/core/Checkbox';
+const StCheckbox = props => (
+    <Checkbox
+    value="checkedA"
+    inputProps={{ 'aria-label': 'Checkbox A' }}
+    />
 )
 
-export default Checkbox;
+export default StCheckbox;

@@ -33,9 +33,7 @@ export default function CustomSurvey({ surveyData }) {
       <Card>
         <h1>Sandbox survey</h1>
         {surveyData.questions.map((object, i) => (
-            <Input key={i} prompt={object.question_name} type={object.question_type} number={i}>
-              
-            </Input>
+            <Input key={i} question={object}/>
         ))}
         <Link href='/surveys/thank-you'>
           <a className='button button-primary'>submit</a>

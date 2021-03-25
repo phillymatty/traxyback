@@ -4,13 +4,12 @@ import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 
 export default function StarRating({props}) {
-    const uniqueName = `rating${props.number}`
+    const uniqueName = `rating${props.question.question_id}`;
+    const defaultValue = (props.question.answer != '' ? props.question.answer : 0);
     return (
-        <div>
             <Rating
                 name={uniqueName}
-                defaultValue={2}
+                defaultValue={defaultValue}
             />
-        </div>
     )
 }
