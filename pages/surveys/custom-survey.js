@@ -14,8 +14,15 @@ export async function getServerSideProps(context) {
   if (query.survey_id) {
     const res = await fetch(`https://survey-hackathon-api.review.securitytrax.com/sandbox/user/v1/surveys/${query.survey_id}/actions/get_survey_data?survey_hash=${query.survey_hash}`)
     surveyData = await res.json()
-    if (!surveyData.questions) {
-      surveyData = getSurveyQuestions()
+    surveyData.questions = surveyData.questions ? surveyData.questions.filter(function(question) { return question.scope != 'system'; }) : [];
+
+    if (surveyData.questions.length == 0) {
+      return {
+        redirect: {
+          destination: '/surveys/thank-you',
+          permanent: false,
+        }
+      }
     }
   } else {
     surveyData = getSurveyQuestions()
@@ -31,12 +38,11 @@ export default function CustomSurvey({ surveyData }) {
   const companyName = (surveyData.company_name && surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
   const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
   const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
-  const customQuestions = surveyData.questions.filter(function(question) { return question.scope != "system"; });
 
   return (
     <Layout>
       <Head>
-        <title>Company Survey</title>
+        <title>{surveyData.survey_name}</title>
       </Head>
       <Card>
         <CardCell>
@@ -50,7 +56,7 @@ export default function CustomSurvey({ surveyData }) {
           <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
         </CardCell>
         <CardCell>
-          {customQuestions.map((object, i) => (
+          {surveyData.questions.map((object, i) => (
             <Input key={i} question={object} surveyData={surveyData} surveyHash={query.survey_hash} callback={sendData}/>
           ))}
         </CardCell>
