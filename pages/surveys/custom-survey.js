@@ -40,6 +40,11 @@ export default function CustomSurvey({ surveyData }) {
       </Head>
       <Card>
         <CardCell>
+        <picture>
+            <source srcSet="/darkMode-sandbox.svg" media="(prefers-color-scheme: dark)" />
+            <source srcSet="/sandbox.svg" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
+            <img id="logo" src="/sandbox.svg" />
+        </picture>
           <h1>{surveyData.survey_name}</h1>
           <p>Hi {customerName}</p>
           <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
