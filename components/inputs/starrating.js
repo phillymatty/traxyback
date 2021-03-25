@@ -1,7 +1,6 @@
 //star rating.js
 import React from 'react';
 import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 
 export default function StarRating({props}) {
     const uniqueName = `rating${props.question.question_id}`;
@@ -10,6 +9,9 @@ export default function StarRating({props}) {
             <Rating
                 name={uniqueName}
                 defaultValue={defaultValue}
+                onChange={(event, newValue) => {
+                    props.callback()
+                }}
             />
     )
 }

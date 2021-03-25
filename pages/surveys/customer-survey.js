@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { getCompanySurveyQuestions, getSurveyQuestions } from '../../lib/surveys'
+import { getCompanySurveyQuestions, getSurveyQuestions, sendData } from '../../lib/surveys'
 
 import Link from 'next/link'
 import Layout from '../../components/layout'
@@ -42,7 +42,7 @@ export default function CustomerSurvey({ surveyData }) {
             <p>Hi {customerName}</p>
             <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
           {surveyData.questions.map((object, i) => (
-            <Input key={i} question={object}/>
+            <Input key={i} question={object} surveyID={query.survey_id} surveyHash={query.survey_hash} callback={sendData}/>
           ))}
           <Link href={{
             pathname: '/surveys/custom-survey',
