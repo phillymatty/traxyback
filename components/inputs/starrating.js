@@ -1,6 +1,7 @@
 //star rating.js
 import React from 'react';
 import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
 
 const labels = {
     1: 'Useless',
@@ -22,7 +23,8 @@ export default function StarRating({props}) {
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
-            props.callback('h','h','h','h')
+            props.question.answer = newValue.toString()
+            props.callback()
           }}
           onChangeActive={(event, newHover) => {
             setHover(newHover);
@@ -31,5 +33,4 @@ export default function StarRating({props}) {
         {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
       </div> 
     )
-    return <h1> a thing</h1>
 }
