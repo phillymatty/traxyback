@@ -6,6 +6,7 @@ import Head from 'next/head'
 import Card from '../../components/cards/card'
 import CardCell from '../../components/cards/card-cell'
 import Input from '../../components/inputs/input'
+import Button from '../../components/button'
 
 export async function getServerSideProps(context) {
   const query = context.query
@@ -51,7 +52,7 @@ export default function CustomerSurvey({ surveyData }) {
               pathname: '/surveys/custom-survey',
               query,
             }}>
-              <a className='button button-primary'>next</a>
+              <Button name="Next" surveyData={surveyData} surveyHash={query.survey_hash} myClick={sendData}/>
             </Link>
           </CardCell>
         </Card>

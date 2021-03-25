@@ -6,6 +6,7 @@ import Card from '../../components/cards/card'
 import Input from '../../components/inputs/input'
 import CardCell from '../../components/cards/card-cell'
 import { useRouter } from 'next/router'
+import Button from '../../components/button'
 
 export async function getServerSideProps(context) {
   const query = context.query
@@ -48,10 +49,9 @@ export default function CustomSurvey({ surveyData }) {
         </CardCell>
         <CardCell>
           <Link href={{
-            pathname: '/surveys/custom-survey',
-            query,
+            pathname: '/surveys/thank-you',
           }}>
-            <a className='button button-primary'>Submit</a>
+            <Button name="Finish" surveyData={surveyData} surveyHash={query.survey_hash} myClick={sendData}/>
           </Link>
         </CardCell>
       </Card>

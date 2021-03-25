@@ -24,7 +24,7 @@ export default function StarRating({props}) {
           onChange={(event, newValue) => {
             setValue(newValue);
             props.question.answer = newValue.toString()
-            props.callback()
+            props.callback(props.surveyData, props.surveyHash)
           }}
           onChangeActive={(event, newHover) => {
             setHover(newHover);

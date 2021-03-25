@@ -14,8 +14,24 @@ export default function RadioButtonsGroup() {
       <FormControl component="fieldset">
         <FormLabel component="legend"></FormLabel>
         <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
+          <FormControlLabel 
+            value="female" 
+            control={<Radio />} 
+            label="Female"
+            onChange={(event) => {
+              props.question.answer = event.target.checked.toString()
+              props.callback(props.surveyData, props.surveyHash)
+            }}
+          />
+          <FormControlLabel 
+            value="male" 
+            control={<Radio />} 
+            label="Male" 
+            onChange={(event) => {
+              props.question.answer = event.target.checked.toString()
+              props.callback(props.surveyData, props.surveyHash)
+            }}
+          />
         </RadioGroup>
       </FormControl>
     );
