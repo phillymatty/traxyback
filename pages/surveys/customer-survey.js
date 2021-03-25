@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router'
+import { getCompanySurveyQuestions, getSurveyQuestions } from '../../lib/surveys'
+
 import Link from 'next/link'
 import Layout from '../../components/layout'
 import Head from 'next/head'
