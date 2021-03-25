@@ -1,16 +1,70 @@
+@import "../colors";
+
 .questions {
     display: flex;
     flex-direction: column;
     flex: 0 1 auto;
     width: fit-content;
 }
-
+@for $i from 1 through 20 {
+    .question#{$i} {
+      order: $i;
+    }
+  }
 .label {
     display: flex;
-
+    font-size: 18px;
+    padding: 10px 0;
 }
 
 .StCheckbox {
     display: flex;
     flex: 0 1 auto;
+}
+
+.StarRating {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+
+    & .MuiRating-iconEmpty {
+        @media (prefers-color-scheme: light) {
+            color: $gray-10;
+        }
+        @media (prefers-color-scheme: dark) {
+            color: $gray-40-dark-mode;
+        }
+    }
+    & .MuiRating-iconHover {
+        @media (prefers-color-scheme: light) {
+            color: $adc-accent-yellow;
+        }
+        @media (prefers-color-scheme: dark) {
+            color: $adc-accent-yellow-dark-mode;
+        }
+    }
+    & .MuiRating-iconFilled {
+        @media (prefers-color-scheme: light) {
+            color: $adc-accent-yellow;
+        }
+        @media (prefers-color-scheme: dark) {
+            color: $adc-accent-yellow-dark-mode;
+        }
+    }
+}
+
+.textArea {
+    padding: 10px 0;
+    width: 100%;
+    textArea {
+        width: 100%;
+        @media (prefers-color-scheme: light) {
+            background-color: $base-color;
+            color: $adc-text-color-secondary;
+        }
+        @media (prefers-color-scheme: dark) {
+            background-color: $base-color-dark-mode;
+            color: $adc-text-color-secondary-dark-mode;
+        }
+    }
 }

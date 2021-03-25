@@ -2,16 +2,34 @@
 import React from 'react';
 import Rating from '@material-ui/lab/Rating';
 
+const labels = {
+    1: 'Useless',
+    2: 'Poor',
+    3: 'Ok',
+    4: 'Good',
+    5: 'Excellent',
+  };
 export default function StarRating({props}) {
     const uniqueName = `rating${props.question.question_id}`;
     const defaultValue = (props.question.answer != '' ? props.question.answer : 0);
+    const [value, setValue] = React.useState(defaultValue);
+    const [hover, setHover] = React.useState(-1);
+  
     return (
-            <Rating
-                name={uniqueName}
-                defaultValue={defaultValue}
-                onChange={(event, newValue) => {
-                    props.callback()
-                }}
-            />
+      <div className='StarRating'>
+        <Rating
+          name={uniqueName}
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+            props.callback('h','h','h','h')
+          }}
+          onChangeActive={(event, newHover) => {
+            setHover(newHover);
+          }}
+        />
+        {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+      </div> 
     )
+    return <h1> a thing</h1>
 }

@@ -19,8 +19,8 @@
 }
 
 .content {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    align-items: center;
 }
