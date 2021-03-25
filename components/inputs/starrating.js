@@ -12,7 +12,7 @@ const labels = {
   };
 export default function StarRating({props}) {
     const uniqueName = `rating${props.question.question_id}`;
-    const defaultValue = (props.question.answer != '' ? props.question.answer : 0);
+    const defaultValue = (props.question.answer != '' ? parseInt(props.question.answer) : 0);
     const [value, setValue] = React.useState(defaultValue);
     const [hover, setHover] = React.useState(-1);
   
