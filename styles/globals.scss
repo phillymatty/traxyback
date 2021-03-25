@@ -30,9 +30,12 @@ p {
 * {
     box-sizing: border-box;
 }
-
-#logo {
+picture {
     height: 80px;
     width: auto;
-    
+    display: flex;    
+    source {
+        width: auto;//hack to make the image stay in the flex context
+    }
+
 }
