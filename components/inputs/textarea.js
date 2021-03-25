@@ -2,15 +2,19 @@
 import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-const Textarea = props => (
+export default function Textarea({props}) {
+
+return (
    <div className="textArea">
 
        <TextareaAutosize
+       onChange={(event) => {
+        props.question.answer = event.target.innerHTML.toString()
+        props.callback(props.surveyData, props.surveyHash)
+      }}
        aria-label="minimum height" rowsMin={6}
-       defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-           ut labore et dolore magna aliqua."
-     />
+       defaultValue={props.question.answer}     />
    </div>
 )
 
-export default Textarea;
+}
