@@ -27,10 +27,10 @@ export async function getServerSideProps(context) {
 
 export default function CustomerSurvey({ surveyData }) {
   const {query} = useRouter();
-  const customerName = (surveyData.customer_name != ' ' ? surveyData.customer_name : 'Valued Customer');
-  const companyName = (surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
-  const surveyType = (surveyData.survey_type != '' ? surveyData.survey_type : 'Security System Install');
-  const userName = (surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
+  const customerName = (surveyData.customer_name && surveyData.customer_name != ' ' ? surveyData.customer_name : 'Valued Customer');
+  const companyName = (surveyData.company_name && surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
+  const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
+  const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
 
     return (
       <Layout>
