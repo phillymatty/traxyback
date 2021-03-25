@@ -12,9 +12,9 @@ export default function ThankYou() {
         <Card>
             <CardCell>
                 <picture>
-                    <source srcSet="/darkMode-sandbox.svg" media="(prefers-color-scheme: dark)" />
-                    <source srcSet="/sandbox.svg" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
-                    <img id="logo" src="/sandbox.svg" />
+                    <source srcSet="/darkMode-sandbox.png" media="(prefers-color-scheme: dark)" />
+                    <source srcSet="/sandbox.png" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
+                    <img id="logo" src="/sandbox.png" />
                 </picture>
                 <h1>Thank You</h1>
             </CardCell>
