@@ -1,6 +1,7 @@
 @import "colors";
 @import "breakpoints";
 @import "components/buttons/button.module.scss";
+@import "components/Inputs.module.scss";
 
 html,
 body {
@@ -22,7 +23,12 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
+p {
+    font-size: 20px;
+    
+}
 * {
     box-sizing: border-box;
 }
+
+  
