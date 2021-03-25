@@ -17,8 +17,10 @@ function InputType(props) {
    if(props.question.question_type == 'true-false'){
        return <StCheckbox props={props} />
    }
-   else if((props.question.question_type == 'text')){
+   else if(props.question.question_type == 'text'){
        return <Textarea props={props}/>
    }
-   return  <StarRating props={props}/>
+   else if (props.question.question_type == 'star'){
+        return  <StarRating props={props}/>
+   }
 }

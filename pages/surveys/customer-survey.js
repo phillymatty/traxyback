@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { getSurveyQuestions, sendData } from '../../lib/surveys'
+import { getSurveyQuestions, sendData, updateOverallScore } from '../../lib/surveys'
 import Link from 'next/link'
 import Layout from '../../components/layout'
 import Head from 'next/head'
@@ -13,7 +13,8 @@ export async function getServerSideProps(context) {
   if (query.survey_id) {
     const res = await fetch(`https://survey-hackathon-api.review.securitytrax.com/sandbox/user/v1/surveys/${query.survey_id}/actions/get_survey_data?survey_hash=${query.survey_hash}`)
     surveyData = await res.json()
-    if (!surveyData.questions) {
+    surveyData.questions = surveyData.questions ? surveyData.questions.filter(function(question) { return question.scope == "system"; }) : [];
+    if (surveyData.questions.length == 0) {
       surveyData = getSurveyQuestions()
     }
   } else {
@@ -30,8 +31,15 @@ export default function CustomerSurvey({ surveyData }) {
   const companyName = (surveyData.company_name && surveyData.company_name != '' ? surveyData.company_name : 'Sandbox Security');
   const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
   const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
-  const systemQuestions = surveyData.questions.filter(function(question) { return question.scope == "system"; });
-
+  let overallRating = {}
+  if ('result' in query) {
+    overallRating = {
+      question_name: 'Overall Rating',
+      question_type: 'star',
+      question: 'Overall Rating',
+      answer: query.result
+    }
+  }
   return (
     <Layout>
         <Head>
@@ -49,7 +57,8 @@ export default function CustomerSurvey({ surveyData }) {
             <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
           </CardCell>
           <CardCell>
-            {systemQuestions.map((object, i) => (
+            <Input question={overallRating} surveyData={surveyData} surveyHash={query.survey_hash} callback={updateOverallScore}/>
+            {surveyData.questions.map((object, i) => (
               <Input key={i} question={object} surveyData={surveyData} surveyHash={query.survey_hash} callback={sendData}/>
             ))}
           </CardCell>
