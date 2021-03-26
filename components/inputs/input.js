@@ -1,6 +1,7 @@
 //Input.js
 import Textarea from './textarea'
 import StarRating from './starrating'
+import RadioButtonsGroup from './radio'
 import StCheckbox from './checkbox'
 import styles from '../../styles/components/Inputs.module.scss'
 
@@ -15,7 +16,7 @@ export default Input;
 
 function InputType(props) {
    if(props.question.question_type == 'true-false'){
-       return <StCheckbox props={props} />
+       return <RadioButtonsGroup props={props} />
    }
    else if(props.question.question_type == 'text'){
        return <Textarea props={props}/>
