@@ -6,7 +6,6 @@ import Card from '../../components/cards/card'
 import Input from '../../components/inputs/input'
 import CardCell from '../../components/cards/card-cell'
 import { useRouter } from 'next/router'
-import Button from '../../components/button'
 
 export async function getServerSideProps(context) {
   const query = context.query
@@ -39,6 +38,10 @@ export default function CustomSurvey({ surveyData }) {
   const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
   const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
 
+  const handleClick = (event) => {
+    surveyData.is_complete = true
+    sendData(surveyData, query.survey_hash)
+  }
   return (
     <Layout>
       <Head>
@@ -64,7 +67,7 @@ export default function CustomSurvey({ surveyData }) {
           <Link href={{
             pathname: '/surveys/thank-you',
           }}>
-            <Button name="Finish" surveyData={surveyData} surveyHash={query.survey_hash} myClick={sendData}/>
+            <a className='button button-primary' onClick={handleClick}>Finish</a>
           </Link>
         </CardCell>
       </Card>
