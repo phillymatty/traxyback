@@ -32,12 +32,12 @@ export default function CustomerSurvey({ surveyData }) {
   const surveyType = (surveyData.survey_type && surveyData.survey_type != '' ? surveyData.survey_type.split('_').map(word => {return word.charAt(0).toUpperCase() + word.slice(1)}).join(' ') : 'Security System Install');
   const userName = (surveyData.user_name && surveyData.user_name != ' ' ? surveyData.user_name : 'Michel Scott');
   let overallRating = {}
-  if ('result' in query) {
+  if ('rating' in query) {
     overallRating = {
       question_name: 'Overall Rating',
       question_type: 'star',
       question: 'Overall Rating',
-      answer: query.result
+      answer: query.rating
     }
   }
   return (
@@ -51,7 +51,7 @@ export default function CustomerSurvey({ surveyData }) {
             <source srcSet="/darkMode-sandbox.svg" media="(prefers-color-scheme: dark)" />
             <source srcSet="/sandbox.svg" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
             <img id="logo" src="/sandbox.svg" />
-        </picture>
+          </picture>
             <h1>{surveyData.survey_name}</h1>
             <p>Hi {customerName}</p>
             <p>Your input is very important to us here at {companyName}. Will you take a few mins of you time and let us know how your {surveyType} with {userName} went?</p>
